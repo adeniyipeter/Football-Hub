@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="standings-header">
+    <h1 class="standings-title">League Standings</h1>
+    <p class="standings-description">
+      Stay updated with the latest standings from top football leagues around the world.
+    </p>
+  </div>
+
+  <div class="tabs">
+
+
+    <div class="tab-content tab-active">
+      <div class="table-container">
+        <table class="standings-table">
+          <caption class="table-caption">Premier League 2022/23 Final Standings</caption>
+          <thead>
+            <tr>
+              <th class="position-column">Pos</th>
+              <th class="team-column">Team</th>
+              <th>P</th>
+              <th>W</th>
+              <th>D</th>
+              <th>L</th>
+              <th>GF</th>
+              <th>GA</th>
+              <th>GD</th>
+              <th>Pts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of premierLeagueTeams" [ngClass]="{'champions-league-row': team.position <= 4}">
+              <td class="position-cell">{{ team.position }}</td>
+              <td class="team-cell">{{ team.team }}</td>
+              <td>{{ team.played }}</td>
+              <td>{{ team.won }}</td>
+              <td>{{ team.drawn }}</td>
+              <td>{{ team.lost }}</td>
+              <td>{{ team.gf }}</td>
+              <td>{{ team.ga }}</td>
+              <td>{{ team.gd }}</td>
+              <td class="points-cell">{{ team.points }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="update-info">
+    <p>Data last updated: April 24, 2023</p>
+  </div>
+</div>

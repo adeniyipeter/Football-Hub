@@ -1,0 +1,111 @@
+/* --- Header Styles --- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.mat-toolbar {
+  height: 4rem;
+  padding: 0 1rem;
+}
+
+.header-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+/* --- Logo --- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Spacer to push nav and menu button to the right --- */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* --- Desktop Navigation --- */
+.desktop-nav {
+  display: none;
+  gap: 0.5rem;
+}
+
+.desktop-nav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: none;
+  min-width: auto;
+  padding: 0 0.5rem;
+}
+
+.desktop-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.desktop-nav a.active {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* --- Mobile Menu Button --- */
+.mobile-menu-button {
+  display: inline-flex;
+}
+
+/* --- Custom Mobile Menu Styles --- */
+.mobile-menu-wrapper {
+  position: relative;
+}
+
+.custom-mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.custom-mobile-menu a {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.custom-mobile-menu a:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+/* --- Responsive: Show desktop nav and hide mobile menu button at 640px+ --- */
+@media (min-width: 640px) {
+  .desktop-nav {
+    display: inline-flex;
+    gap: 1.5rem;
+  }
+
+  .desktop-nav a {
+    padding: 0 0.25rem;
+  }
+
+  .mobile-menu-button {
+    display: none;
+  }
+}

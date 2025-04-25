@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="form-container">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Player Registration</h2>
+        <p class="card-description">
+          Join our football community by filling out the registration form below.
+        </p>
+      </div>
+      <div class="card-content">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+          <div class="form-group">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              id="fullName"
+              type="text"
+              formControlName="fullName"
+              class="form-input"
+              [ngClass]="{'form-input-error': fullName?.invalid && (fullName?.dirty || fullName?.touched)}"
+              placeholder="John Doe"
+            />
+            <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="form-error">
+              <div *ngIf="fullName?.errors?.['required']">Full name is required.</div>
+              <div *ngIf="fullName?.errors?.['minlength']">Full name must be at least 2 characters.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-input"
+              [ngClass]="{'form-input-error': email?.invalid && (email?.dirty || email?.touched)}"
+              placeholder="john.doe@example.com"
+            />
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="form-error">
+              <div *ngIf="email?.errors?.['required']">Email is required.</div>
+              <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="age" class="form-label">Age</label>
+            <input
+              id="age"
+              type="text"
+              formControlName="age"
+              class="form-input"
+              [ngClass]="{'form-input-error': age?.invalid && (age?.dirty || age?.touched)}"
+              placeholder="25"
+            />
+            <div *ngIf="age?.invalid && (age?.dirty || age?.touched)" class="form-error">
+              <div *ngIf="age?.errors?.['required']">Age is required.</div>
+              <div *ngIf="age?.errors?.['pattern']">Please enter a valid age.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="position" class="form-label">Position</label>
+            <select
+              id="position"
+              formControlName="position"
+              class="form-select"
+              [ngClass]="{'form-input-error': position?.invalid && (position?.dirty || position?.touched)}"
+            >
+              <option value="" disabled>Select a position</option>
+              <option *ngFor="let pos of positions" [value]="pos.value">{{ pos.label }}</option>
+            </select>
+            <div *ngIf="position?.invalid && (position?.dirty || position?.touched)" class="form-error">
+              <div *ngIf="position?.errors?.['required']">Please select a position.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="experience" class="form-label">Experience Level</label>
+            <select
+              id="experience"
+              formControlName="experience"
+              class="form-select"
+              [ngClass]="{'form-input-error': experience?.invalid && (experience?.dirty || experience?.touched)}"
+            >
+              <option value="" disabled>Select your experience level</option>
+              <option *ngFor="let exp of experienceLevels" [value]="exp.value">{{ exp.label }}</option>
+            </select>
+            <div *ngIf="experience?.invalid && (experience?.dirty || experience?.touched)" class="form-error">
+              <div *ngIf="experience?.errors?.['required']">Please select your experience level.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea
+              id="bio"
+              formControlName="bio"
+              class="form-textarea"
+              [ngClass]="{'form-input-error': bio?.invalid && (bio?.dirty || bio?.touched)}"
+              placeholder="Tell us about your football journey..."
+            ></textarea>
+            <p class="form-description">You can share your football experience, achievements, and goals.</p>
+            <div *ngIf="bio?.invalid && (bio?.dirty || bio?.touched)" class="form-error">
+              <div *ngIf="bio?.errors?.['maxlength']">Bio must not be longer than 500 characters.</div>
+            </div>
+          </div>
+
+          <button type="submit" class="button button-primary button-full" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Submitting...' : 'Submit Registration' }}
+          </button>
+        </form>
+      </div>
+      <div class="card-footer">
+        <p class="terms-text">By registering, you agree to our Terms of Service and Privacy Policy.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="toast.visible" class="toast">
+  <div class="toast-content">
+    <h3 class="toast-title">{{ toast.title }}</h3>
+    <p class="toast-description">{{ toast.description }}</p>
+  </div>
+</div>

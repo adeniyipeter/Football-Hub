@@ -1,0 +1,30 @@
+<mat-toolbar class="header">
+  <div class="container header-container">
+    <!-- Logo -->
+    <a routerLink="/" class="logo">
+
+      <span>FootballHub</span>
+    </a>
+    <!-- Spacer -->
+    <span class="spacer"></span>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a mat-button routerLink="/registration" routerLinkActive="active">Registration</a>
+      <a mat-button routerLink="/standings" routerLinkActive="active">Standings</a>
+    </nav>
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-wrapper">
+      <button mat-icon-button (click)="toggleMenu()" class="mobile-menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- Custom Dropdown -->
+      <div class="custom-mobile-menu" *ngIf="menuOpen">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a routerLink="/registration" routerLinkActive="active">Registration</a>
+        <a routerLink="/standings" routerLinkActive="active">Standings</a>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
